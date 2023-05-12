@@ -7,9 +7,6 @@ const {
 	verifyTokenAndAdmin
 } = require("./verifyToken")
 
-const dotenv = require("dotenv")
-dotenv.config()
-
 //Update
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
 	if (req.body.password) {
@@ -74,21 +71,6 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
 router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
 	const today = new Date()
 	const lastYear = new Date(today.setFullYear(today.getFullYear() - 1))
-
-	// const monthsArray = [
-	// 	"January",
-	// 	"February",
-	// 	"March",
-	// 	"April",
-	// 	"May",
-	// 	"June",
-	// 	"July",
-	// 	"Auguest",
-	// 	"September",
-	// 	"October",
-	// 	"November",
-	// 	"December"
-	// ]
 
 	try {
 		const data = await User.aggregate([
