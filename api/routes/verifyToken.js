@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken")
 
 const verifyToken = (req, res, next) => {
-	const authHeader = req.headers.token
+	const authHeader = req.headers.authorization
+	console.log(authHeader)
 	if (!authHeader) {
 		return res.status(401).json("You are not authenticated")
 	}
@@ -9,7 +10,7 @@ const verifyToken = (req, res, next) => {
 	try {
 		jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
 			if (err) throw err
-			req.user = user
+			req.user = user //req.user is the user object that we created
 			next()
 		})
 	} catch (err) {
