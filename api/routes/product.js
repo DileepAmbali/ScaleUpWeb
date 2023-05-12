@@ -18,10 +18,10 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
 })
 
 //Update
-router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
+router.put("/:productid", verifyTokenAndAdmin, async (req, res) => {
 	try {
 		const updatedProduct = await Product.findByIdAndUpdate(
-			req.params.id,
+			req.params.productid,
 			{
 				$set: req.body
 			},
@@ -34,9 +34,9 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
 })
 
 //Delete
-router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
+router.delete("/:productid", verifyTokenAndAdmin, async (req, res) => {
 	try {
-		await Product.findByIdAndDelete(req.params.id)
+		await Product.findByIdAndDelete(req.params.productid)
 		res.status(200).json("Product has been deleted")
 	} catch (err) {
 		res.status(500).json(err)
@@ -78,44 +78,17 @@ router.get("/", async (req, res) => {
 	}
 })
 
-// //Get User Stats
-// router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
-// 	const today = new Date()
-// 	const lastYear = new Date(today.setFullYear(today.getFullYear() - 1))
+// Todo Product Statistics (Most popular, Most viewed, etc)
 
-// 	// const monthsArray = [
-// 	// 	"January",
-// 	// 	"February",
-// 	// 	"March",
-// 	// 	"April",
-// 	// 	"May",
-// 	// 	"June",
-// 	// 	"July",
-// 	// 	"Auguest",
-// 	// 	"September",
-// 	// 	"October",
-// 	// 	"November",
-// 	// 	"December"
-// 	// ]
+// router.get("/statistics", async (req, res) => {
+// 	const date = new Date()
+// 	const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))
 
 // 	try {
-// 		const data = await User.aggregate([
-// 			{
-// 				$match: {
-// 					createdAt: { $gte: lastYear }
-// 				}
-// 			},
-// 			{
-// 				$project: {
-// 					month: { $month: "$createdAt" }
-// 				}
-// 			},
-// 			{
-// 				$group: {
-// 					_id: "$month",
-// 					total: { $sum: 1 }
-// 				}
-// 			}
+// 		const data = await Product.aggregate([
+// 			{ $match: { createdAt: { $gte: lastYear } } },
+// 			{ $project: { month: { $month: "$createdAt" } } },
+// 			{ $group: { _id: "$month", total: { $sum: 1 } } }
 // 		])
 // 		res.status(200).json(data)
 // 	} catch (err) {
