@@ -1,9 +1,6 @@
 import "./assets/main.css"
-//theme
-import "primevue/resources/themes/lara-light-indigo/theme.css"
-
-//core
-import "primevue/resources/primevue.min.css"
+import "primevue/resources/themes/lara-light-indigo/theme.css" //theme
+import "primevue/resources/primevue.min.css" //core
 
 import "primeicons/primeicons.css"
 
