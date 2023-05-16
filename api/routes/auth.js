@@ -6,67 +6,49 @@ const jwt = require("jsonwebtoken")
 //Register
 router.post("/register", async (req, res) => {
 	const {
-		floating_username,
-		floating_email,
-		floating_password,
-		floating_repeat_password,
-		floating_first_name,
-		floating_last_name,
-		floating_phone_number,
-		floating_company
+		username,
+		email,
+		password,
+		firstName,
+		lastName,
+		phoneNumber,
+		companyName
 	} = req.body
-
-	// console.log(req.body)
-
-	// console.log(
-	// 	"password: " + floating_password + "\n",
-	// 	"repeat password: " + floating_repeat_password + "\n",
-	// 	"email" + floating_email + "\n",
-	// 	"username" + floating_username + "\n",
-	// 	"first name" + floating_first_name + "\n",
-	// 	"last name" + floating_last_name + "\n",
-	// 	"phone number" + floating_phone_number + "\n",
-	// 	"company" + floating_company + "\n"
-	// )
-
-	if (floating_password !== floating_repeat_password) {
-		console.log("Passwords do not match")
-		return res.status(400).json("Passwords do not match")
-	}
+	console.log(req.body)
 
 	try {
 		const salt = await bcrypt.genSalt(10)
-		const hashedPassword = await bcrypt.hash(floating_password, salt)
-		console.log("hashed password: " + hashedPassword + "\n")
+		const hashedPassword = await bcrypt.hash(password, salt)
 
 		const newUser = new User({
-			username: floating_username,
-			firstName: floating_first_name,
-			lastName: floating_last_name,
-			email: floating_email,
-			phoneNumber: floating_phone_number,
-			companyName: floating_company,
-			password: hashedPassword
+			username,
+			email,
+			password: hashedPassword,
+			firstName,
+			lastName,
+			phoneNumber,
+			companyName
 		})
-		console.log(newUsers)
 		await newUser.save()
 		res.status(201).json(newUser)
-	} catch (err) {
-		if (err.code === 11000) {
-			return res.status(400).json("Username or email already exists")
-		} else if (err.name === "ValidationError") {
-			return res.status(400).json(err.message)
-		} else if (err.name === "MongoError") {
-			return res.status(400).json(err.message)
-		} else {
-			res.status(500).json(err)
+	} catch (error) {
+		if (error.code === 11000) {
+			return res.status(500).json("Username or email already exists")
 		}
+		if (error.name === "ValidationError") {
+			return res.status(500).json(error.message)
+		}
+		if (error.name === "MongoError") {
+			return res.status(500).json(error.message)
+		}
+		res.status(500).json(error)
 	}
 })
 
 //Login
 
 router.post("/login", async (req, res) => {
+	console.log(req.body)
 	try {
 		const user = await User.findOne({ username: req.body.username })
 		if (!user) {
