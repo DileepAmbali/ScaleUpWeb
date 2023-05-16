@@ -14,7 +14,6 @@
 				Sign in to your account
 			</h2>
 		</div>
-
 		<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 			<form class="space-y-6" action="#" method="POST">
 				<div>
@@ -44,10 +43,10 @@
 							>Password</label
 						>
 						<div class="text-sm">
-							<a
-								href="#"
+							<router-link
+								to="#"
 								class="font-semibold text-indigo-600 hover:text-indigo-500"
-								>Forgot password?</a
+								>Forgot password?</router-link
 							>
 						</div>
 					</div>
@@ -77,25 +76,48 @@
 
 			<p class="mt-10 text-center text-sm text-gray-500">
 				Not a member?
-				{{ " " }}
-				<a
-					href="#"
+				<router-link
+					:to="{ name: 'register' }"
 					class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-					>Start a 14 day free trial</a
+					>Make an account</router-link
 				>
 			</p>
+			<!-- Add the Google login button -->
 		</div>
 	</div>
 </template>
 
 <script setup>
 import { ref } from "vue"
+import { GoogleLogin } from "vue3-google-login"
 const email = ref("")
 const password = ref("")
+
+// Google sign-in configuration
+// const googleClientId = "YOUR_GOOGLE_CLIENT_ID"
+// const googleRedirectUri = "YOUR_GOOGLE_REDIRECT_URI"
+// const googleScope = "email"
+// const googleAccessType = "offline"
+// const googleCookiePolicy = "single_host_origin"
 
 function display() {
 	console.log(email.value, password.value)
 }
 
-function handleSignIn() {}
+// function handleSignIn() {
+// 	// Your sign-in logic goes here
+// }
+
+// // Handle successful Google sign-in
+// function handleGoogleSuccess(response) {
+// 	const { profileObj } = response
+// 	// Handle the response from Google sign-in
+// 	console.log("Google Sign-In Success:", profileObj)
+// }
+
+// // Handle error during Google sign-in
+// function handleGoogleError(error) {
+// 	// Handle the error from Google sign-in
+// 	console.log("Google Sign-In Error:", error)
+// }
 </script>
