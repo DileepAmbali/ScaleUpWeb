@@ -1,0 +1,282 @@
+[
+    {
+      "id": "1",
+      "name": "Vanilla Cake",
+      "price": "$10",
+      "href": "#",
+      "breadcrumbs": [
+        {
+          "id": 1,
+          "name": "Food",
+          "href": "#"
+        },
+        {
+          "id": 2,
+          "name": "Dessert",
+          "href": "#"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://www.recipetineats.com/wp-content/uploads/2020/08/My-best-Vanilla-Cake_9-SQ.jpg",
+          "alt": "Vanilla cake with white frosting and sprinkles."
+        },
+        {
+          "src": "https://sallysbakingaddiction.com/wp-content/uploads/2019/01/vanilla-cake-5.jpg",
+          "alt": "Vanilla cake laying flat on white surface."
+        },
+        {
+          "src": "https://amycakesbakes.com/wp-content/uploads/2022/12/Vanilla-Cake-with-Strawberry-filling-recipe.jpg",
+          "alt": "Valinna cake with strawberry filling."
+        },
+        {
+          "src": "https://www.iheartnaptime.net/wp-content/uploads/2022/05/I-Heart-Naptime-homemade-vanilla-cake-500x500.jpg",
+          "alt": "Vanilla cake with creamy frosting."
+        }
+      ],
+      "colors": [
+        
+      ],
+      "sizes": [
+        {
+          "name": "1PC",
+          "inStock": true
+        },
+        {
+          "name": "2PC",
+          "inStock": true
+        },
+        {
+          "name": "1/2KG",
+          "inStock": true
+        },
+        {
+          "name": "1KG",
+          "inStock": true
+        },
+        {
+          "name": "2KG",
+          "inStock": false
+        }
+      ],
+      "description": "Experience pure delight with our heavenly vanilla cake. Delicately crafted, it boasts a velvety sponge infused with Madagascar vanilla beans. Adorned with luscious vanilla buttercream, each bite is a symphony of flavors that will leave you craving for more. Treat yourself to this indulgent masterpiece and savor a moment of pure bliss.",
+      "highlights": [
+        "Velvety Vanilla Sponge: Smooth, moist, infused with vanilla",
+        "Intense Vanilla Flavor: Pure, aromatic Madagascar vanilla essence",
+        "Luscious Vanilla Buttercream: Creamy, rich complement to sponge",
+        "Irresistible Visual Appeal: Delicate, enticing vanilla speckles"
+      ],
+      "details": "When you order our cake, you'll receive a beautifully presented, freshly baked vanilla masterpiece, expertly crafted with the finest ingredients and adorned with a luscious layer of vanilla buttercream—a delectable treat that will captivate your senses and leave you craving for more."
+    },
+    {
+      "id": "2",
+      "name": "Basic Tee 6-Pack",
+      "price": "$192",
+      "href": "#",
+      "breadcrumbs": [
+        {
+          "id": 1,
+          "name": "Clothing",
+          "href": "#"
+        },
+        {
+          "id": 2,
+          "name": "Men",
+          "href": "#"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg",
+          "alt": "Two each of gray, white, and black shirts laying flat."
+        },
+        {
+          "src": "https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg",
+          "alt": "Model wearing plain black basic tee."
+        },
+        {
+          "src": "https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg",
+          "alt": "Model wearing plain gray basic tee."
+        },
+        {
+          "src": "https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg",
+          "alt": "Model wearing plain white basic tee."
+        }
+      ],
+      "colors": [
+        {
+          "name": "White",
+          "class": "bg-white",
+          "selectedClass": "ring-gray-400"
+        },
+        {
+          "name": "Gray",
+          "class": "bg-gray-200",
+          "selectedClass": "ring-gray-400"
+        },
+        {
+          "name": "Black",
+          "class": "bg-gray-900",
+          "selectedClass": "ring-gray-900"
+        }
+      ],
+      "sizes": [
+        {
+          "name": "XXS",
+          "inStock": false
+        },
+        {
+          "name": "XS",
+          "inStock": true
+        },
+        {
+          "name": "S",
+          "inStock": true
+        },
+        {
+          "name": "M",
+          "inStock": true
+        },
+        {
+          "name": "L",
+          "inStock": true
+        },
+        {
+          "name": "XL",
+          "inStock": true
+        },
+        {
+          "name": "2XL",
+          "inStock": true
+        },
+        {
+          "name": "3XL",
+          "inStock": true
+        }
+      ],
+      "description": "The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: \"Black\". Need to add an extra pop of color to your outfit? Our white tee has you covered.",
+      "highlights": [
+        "Hand cut and sewn locally",
+        "Dyed with our proprietary colors",
+        "Pre-washed & pre-shrunk",
+        "Ultra-soft 100% cotton"
+      ],
+      "details": "The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming \"Charcoal Gray\" limited release."
+    },
+    {
+      "id": "3",
+      "name": "Freshly Roasted Coffee Beans",
+      "price": "$15",
+      "href": "#",
+      "breadcrumbs": [
+        {
+          "id": 1,
+          "name": "Food",
+          "href": "#"
+        },
+        {
+          "id": 2,
+          "name": "Beverages",
+          "href": "#"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://5.imimg.com/data5/SELLER/Default/2021/9/CZ/RG/VE/5504430/robusta-roasted-coffee-beans-1000x1000.jpg",
+          "alt": "A close-up shot of freshly roasted coffee beans."
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0038/9378/8784/products/Arabica_beans_536x.jpeg?v=1602047472",
+          "alt": "A bag of freshly roasted coffee beans."
+        },
+        {
+          "src": "https://m.media-amazon.com/images/I/41C9c0SmMZL.jpg",
+          "alt": "A cup of brewed coffee made from freshly roasted beans."
+        },
+        {
+          "src": "https://d3kgrlupo77sg7.cloudfront.net/media/chococoorgspice.com/images/products/coorg-organic-arabica-roasted-coffee-beans-250-gm-arabic-coffee-gava-coffee-gahwa.20220911010520.webp",
+          "alt": "A coffee grinder with a pile of coffee beans beside it."
+        }
+      ],
+      "colors": [],
+      "sizes": [
+        {
+          "name": "250g",
+          "inStock": true
+        },
+        {
+          "name": "500g",
+          "inStock": true
+        },
+        {
+          "name": "1kg",
+          "inStock": true
+        }
+      ],
+      "description": "Indulge in the rich aroma and bold flavors of our freshly roasted coffee beans. Sourced from the finest local coffee farms, our beans are carefully handpicked, roasted to perfection, and packaged with love. Experience the satisfaction of grinding and brewing your own cup of coffee, elevating your mornings to a whole new level.",
+      "highlights": [
+        "Locally sourced and roasted",
+        "Rich aroma and bold flavors",
+        "Perfect for grinding and brewing at home",
+        "Available in various quantities"
+      ],
+      "details": "Each package of our freshly roasted coffee beans is carefully sealed to preserve the freshness and quality. From the moment you open the bag, you'll be greeted by the delightful scent of freshly roasted coffee. Enjoy the process of grinding the beans and savor the rich flavors that result from your own brewing."
+    },
+    {
+      "id": "4",
+      "name": "Handcrafted Leather Wallet",
+      "price": "$60",
+      "href": "#",
+      "breadcrumbs": [
+        {
+          "id": 1,
+          "name": "Accessories",
+          "href": "#"
+        },
+        {
+          "id": 2,
+          "name": "Men",
+          "href": "#"
+        }
+      ],
+      "images": [
+        {
+          "src": "https://m.media-amazon.com/images/I/91y9xwn0y+L._SL1500_.jpg",
+          "alt": "A front view of a handcrafted leather wallet."
+        },
+        {
+          "src": "https://m.media-amazon.com/images/I/912oJQn-TyL._AC_UY1100_.jpg",
+          "alt": "An open view of a handcrafted leather wallet showcasing card slots and compartments."
+        },
+        {
+          "src": "https://tiimg.tistatic.com/fp/2/007/344/brown-color-two-folded-mens-leather-wallet-with-card-holder-674.jpg",
+          "alt": "The backside of a handcrafted leather wallet with intricate stitching."
+        },
+        {
+          "src": "https://image.lucrin.com/is/image/LucrinRender/900x600/PM1126-001_VCLS_CGC_CGC/934815-6d3e1f-3c200e-624832-332016-3e342b-8d512b/wallet-cards-holder.jpg",
+          "alt": "A close-up of the logo embossed on a handcrafted leather wallet."
+        }
+      ],
+      "colors": [
+        {
+          "name": "Brown",
+          "class": "bg-brown",
+          "selectedClass": "ring-brown"
+        },
+        {
+          "name": "Black",
+          "class": "bg-black",
+          "selectedClass": "ring-black"
+        }
+      ],
+      "sizes": [],
+      "description": "Upgrade your style and functionality with our handcrafted leather wallet. Meticulously crafted by local artisans using premium leather, this wallet offers a perfect blend of durability and sophistication. With ample card slots, compartments, and a sleek design, it's the ideal accessory for the modern gentleman.",
+      "highlights": [
+        "Hand crafted by local artisans",
+        "Made from high-quality leather",
+        "Ample card slots and compartments",
+        "Sleek and elegant design"
+      ],
+      "details": "Our handcrafted leather wallet is designed to meet your everyday needs while exuding timeless charm. The premium leather ensures longevity, developing a beautiful patina over time. The thoughtful layout of card slots and compartments provides easy organization for your essentials. Carry this wallet with pride and enjoy the luxurious feel it adds to your daily life."
+    }
+]
