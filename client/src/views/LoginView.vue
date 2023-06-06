@@ -1,123 +1,113 @@
 <template>
-	<div
-		class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8"
-	>
-		<div class="sm:mx-auto sm:w-full sm:max-w-sm">
-			<img
-				class="mx-auto h-10 w-auto"
-				src="https://cdn.dribbble.com/userupload/3158903/file/original-3f5abe8b99ff4ba4626ddf6660115182.jpg?compress=1&resize=1504x1128"
-				alt="Your Company"
-			/>
-			<h2
-				class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
-			>
-				Sign in to your account
-			</h2>
-		</div>
-		<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-			<form class="space-y-6" action="#" method="POST">
-				<div>
-					<label
-						for="email"
-						class="block text-sm font-medium leading-6 text-gray-900"
-						>Email address</label
-					>
-					<div class="mt-2">
-						<input
-							id="email"
-							name="email"
-							type="email"
-							autocomplete="email"
-							required="false"
-							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-							v-model="email"
-						/>
-					</div>
-				</div>
-
-				<div>
-					<div class="flex items-center justify-between">
-						<label
-							for="password"
-							class="block text-sm font-medium leading-6 text-gray-900"
-							>Password</label
-						>
-						<div class="text-sm">
-							<router-link
-								to="#"
-								class="font-semibold text-indigo-600 hover:text-indigo-500"
-								>Forgot password?</router-link
-							>
-						</div>
-					</div>
-					<div class="mt-2">
-						<input
-							id="password"
-							name="password"
-							type="password"
-							autocomplete="current-password"
-							required="false"
-							class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-							v-model="password"
-						/>
-					</div>
-				</div>
-
-				<div>
-					<button
-						type="submit"
-						class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-						@click.prevent="handleSignIn"
-					>
-						Sign in
-					</button>
-				</div>
-			</form>
-
-			<p class="mt-10 text-center text-sm text-gray-500">
-				Not a member?
-				<router-link
-					:to="{ name: 'register' }"
-					class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-					>Make an account</router-link
-				>
-			</p>
-			<!-- Add the Google login button -->
-		</div>
-	</div>
+  <div class="w-full h-screen flex flex-col justify-center p-4 m-auto xs:w-96">
+    <div class="flex justify-center items-center mb-4">
+      <img
+        src="https://flowbite.com/docs/images/logo.svg"
+        class="h-8 mr-3"
+        alt="Flowbite Logo"
+      />
+      <div class="dark:text-white">ScaleUpWeb</div>
+    </div>
+    <div
+      class="text-center dark:text-white text-2xl border-b-2 pb-2 dark:border-slate-600 my-8 mx-auto"
+    >
+      Login
+    </div>
+    <form @submit.prevent="handleSubmit">
+      <div class="mb-6">
+        <label
+          for="email"
+          class="block mb-2 text-sm font-medium"
+          :class="[
+            emailError
+              ? 'text-red-700 dark:text-red-500'
+              : 'text-gray-900 dark:text-white',
+          ]"
+          >Your email</label
+        >
+        <input
+          type="email"
+          id="email"
+          class="shadow-lg border text-sm rounded-lg block w-full p-2.5"
+          :class="[
+            emailError ? 'incorrect-credentials' : 'correct-credentials',
+          ]"
+          placeholder="name@email.com"
+          v-model="email"
+          required
+        />
+        <p
+          v-if="emailError"
+          class="mt-2 text-sm text-red-600 dark:text-red-500"
+        >
+          <span class="font-medium">Yikes!</span> Email does not exist!
+        </p>
+      </div>
+      <div class="mb-6">
+        <label
+          for="password"
+          class="block mb-2 text-sm font-medium"
+          :class="[
+            passwordError
+              ? 'text-red-700 dark:text-red-500'
+              : 'text-gray-900 dark:text-white',
+          ]"
+          >Your password</label
+        >
+        <input
+          type="password"
+          id="password"
+          placeholder="********"
+          class="shadow-lg border text-sm rounded-lg block w-full p-2.5"
+          :class="[
+            passwordError ? 'incorrect-credentials' : 'correct-credentials',
+          ]"
+          v-model="password"
+          required
+        />
+        <p
+          v-if="passwordError"
+          class="mt-2 text-sm text-red-600 dark:text-red-500"
+        >
+          <span class="font-medium">Goodn't!</span> Password is wrong!
+        </p>
+      </div>
+      <div class="flex items-start mb-6">
+        <div class="flex items-center h-5">
+          <input
+            id="remember"
+            type="checkbox"
+            value=""
+            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+            required
+          />
+        </div>
+        <label
+          for="remember"
+          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          >Remember me</label
+        >
+      </div>
+      <button
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
 </template>
 
 <script setup>
-import { ref } from "vue"
-import { GoogleLogin } from "vue3-google-login"
-const email = ref("")
-const password = ref("")
+import { ref } from "vue";
 
-// Google sign-in configuration
-// const googleClientId = "YOUR_GOOGLE_CLIENT_ID"
-// const googleRedirectUri = "YOUR_GOOGLE_REDIRECT_URI"
-// const googleScope = "email"
-// const googleAccessType = "offline"
-// const googleCookiePolicy = "single_host_origin"
+const emailError = false;
+const passwordError = false;
 
-function display() {
-	console.log(email.value, password.value)
-}
+const email = ref("");
+const password = ref("");
 
-// function handleSignIn() {
-// 	// Your sign-in logic goes here
-// }
-
-// // Handle successful Google sign-in
-// function handleGoogleSuccess(response) {
-// 	const { profileObj } = response
-// 	// Handle the response from Google sign-in
-// 	console.log("Google Sign-In Success:", profileObj)
-// }
-
-// // Handle error during Google sign-in
-// function handleGoogleError(error) {
-// 	// Handle the error from Google sign-in
-// 	console.log("Google Sign-In Error:", error)
-// }
+const handleSubmit = async () => {};
 </script>
+
+<style lang="scss" scoped></style>

@@ -1,23 +1,15 @@
-<script setup>
-import { RouterView, RouterLink } from "vue-router"
-
-import HomeView from "./views/HomeView.vue"
-import Navbar from "./components/Navbar.vue"
-import Footer from "./components/Footer.vue"
-import { decodeCredential } from "vue3-google-login"
-const callback = (response) => {
-	// decodeCredential will retrive the JWT payload from the credential
-	const userData = decodeCredential(response.credential)
-	console.log("Handle the userData", userData)
-}
-</script>
-
 <template>
-	<Navbar />
-
-	<RouterView />
-
-	<Footer />
+  <div>
+    <Navbar />
+    <RouterView />
+    <Footer />
+  </div>
 </template>
 
-<style scoped></style>
+<script setup>
+import { RouterView } from "vue-router";
+import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue";
+</script>
+
+<style lang="scss" scoped></style>
