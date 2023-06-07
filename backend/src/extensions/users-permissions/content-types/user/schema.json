@@ -82,6 +82,11 @@
       "default": false,
       "required": true,
       "private": true
+    },
+    "zone": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::zone.zone"
     }
   }
 }
