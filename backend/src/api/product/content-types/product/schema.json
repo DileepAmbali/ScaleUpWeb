@@ -19,12 +19,12 @@
     },
     "description": {
       "type": "text",
-      "required": true
+      "required": false
     },
-    "image": {
+    "images": {
       "type": "media",
       "multiple": true,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
@@ -38,14 +38,11 @@
     },
     "seller": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "products"
-    },
-    "zone": {
-      "type": "relation",
       "relation": "oneToOne",
-      "target": "api::zone.zone"
+      "target": "plugin::users-permissions.user"
+    },
+    "highlights": {
+      "type": "json"
     }
   }
 }

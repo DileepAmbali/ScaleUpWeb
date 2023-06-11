@@ -71,20 +71,61 @@ body
 }
 ```
 
-### POST /api/users-permissions/request-upgrade
-
-header: `Authorization: Bearer $userToken`
-
-response: `{success: true}`
-
-> this will have to be manually approved in the admin panel. (change the role from user to seller)
-
-### GET /api/users/me
+### GET /api/users/me?populate=\*
 
 header: `Authorization: Bearer $userToken or $sellerToken`
 
+- enable users-permissions.role.find and zone.find for seller and product
+
 response:
-todo update the handler with all the new shit
+
+```
+{
+  "id": 2,
+  "username": "tonybussing",
+  "email": "tony@email.com",
+  "provider": "local",
+  "confirmed": true,
+  "blocked": false,
+  "createdAt": "2023-05-26T10:38:10.501Z",
+  "updatedAt": "2023-06-11T06:53:00.809Z",
+  "role": {
+    "id": 3,
+    "name": "Seller",
+    "description": "the seller",
+    "type": "seller",
+    "createdAt": "2023-05-25T13:23:53.308Z",
+    "updatedAt": "2023-06-11T06:52:40.309Z"
+  },
+  "zone": {
+    "id": 2,
+    "createdAt": "2023-06-11T05:15:29.797Z",
+    "updatedAt": "2023-06-11T05:15:30.739Z",
+    "publishedAt": "2023-06-11T05:15:30.725Z",
+    "name": "kochi"
+  }
+}
+```
+
+### PUT /api/users/:id
+
+- enable users-permissions.user.update for seller and user
+- this can be used to set zone and to request account upgrade
+
+header: `Authorization: Bearer $userToken` or seller token
+
+body
+
+```json
+{
+  "accUpgradeRequested": true, //if needed
+  "zone": {
+    "id": 1
+  }
+}
+```
+
+> to make user a seller, manual approval is needed in the admin panel. (change the role from user to seller)
 
 ## Products
 
@@ -123,87 +164,52 @@ body
 ```json
 {
   "data": {
-    "title": "test product",
+    "name": "test product",
     "description": "die",
-    "image": {
-      "id": 1
-    },
+    "images": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      }
+    ],
     "price": 102.32,
     "seller": {
       "id": 1
-    }
+    },
+    "highlights": ["ababa", "kakak"]
   }
 }
 ```
 
 response
 
-```json
-{
-  "data": {
-    "id": 1,
-    "attributes": {
-      "title": "test product",
-      "description": "die",
-      "price": 102.32,
-      "createdAt": "2023-05-26T14:28:15.294Z",
-      "updatedAt": "2023-05-26T14:28:15.294Z",
-      "publishedAt": "2023-05-26T14:28:15.286Z"
-    }
-  },
-  "meta": {}
-}
-```
+### GET /api/products?populate=\*,seller.zone
 
-### GET /api/products
+- **enable the users-permissions.user.find permission for public to make this work**
+- enable zone.find for public
 
 response
 
 ```json
-{
-  "data": [
-    {
-      "id": 1,
-      "attributes": {
-        "title": "test product",
-        "description": "die",
-        "price": 102.32,
-        "createdAt": "2023-05-26T14:28:15.294Z",
-        "updatedAt": "2023-05-26T14:28:15.294Z",
-        "publishedAt": "2023-05-26T14:28:15.286Z"
-      }
-    }
-  ],
-  "meta": {
-    "pagination": {
-      "page": 1,
-      "pageSize": 25,
-      "pageCount": 1,
-      "total": 1
-    }
-  }
-}
+
 ```
 
-### GET /api/products/:id
+#### to get all the products corresponding to a merchant
+
+- GET /api/products?filters[seller][id][$eq]=\<sellerid>
+- seller-id as a param
+
+### GET /api/products/:id?populate=\*,seller.zone
+
+- **enable the users-permissions.user.find permission for public to make this work**
+- enable zone.find for public
 
 response
 
 ```json
-{
-  "data": {
-    "id": 1,
-    "attributes": {
-      "title": "test product",
-      "description": "die",
-      "price": 102.32,
-      "createdAt": "2023-05-26T14:28:15.294Z",
-      "updatedAt": "2023-05-26T14:28:15.294Z",
-      "publishedAt": "2023-05-26T14:28:15.286Z"
-    }
-  },
-  "meta": {}
-}
+
 ```
 
 ## Orders
