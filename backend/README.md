@@ -164,8 +164,9 @@ body
 ```json
 {
   "data": {
-    "name": "test product",
+    "name": "new product",
     "description": "die",
+    "details": "dead",
     "images": [
       {
         "id": 1
@@ -178,7 +179,8 @@ body
     "seller": {
       "id": 1
     },
-    "highlights": ["ababa", "kakak"]
+    "highlights": ["bruh", "mi"],
+    "sizes": [{ "name": "oru dozen" }, { "name": "kakkathollayiram" }]
   }
 }
 ```
@@ -193,7 +195,57 @@ response
 response
 
 ```json
-
+{
+  "data": [
+    {
+      "id": 13,
+      "attributes": {
+        "name": "new product",
+        "description": "die",
+        "price": 102.32,
+        "createdAt": "2023-06-11T09:26:49.286Z",
+        "updatedAt": "2023-06-11T09:26:49.286Z",
+        "publishedAt": "2023-06-11T09:26:49.249Z",
+        "highlights": ["bruh", "mi"],
+        "details": "dead",
+        "seller": {
+          "data": {
+            "id": 1,
+            "attributes": {
+              "username": "bobby",
+              "email": "bobby@email.com",
+              "provider": "local",
+              "confirmed": true,
+              "blocked": false,
+              "createdAt": "2023-05-26T10:02:50.781Z",
+              "updatedAt": "2023-06-11T09:31:21.583Z",
+              "companyName": "booby",
+              "zone": {
+                "data": {
+                  "id": 1,
+                  "attributes": {
+                    "createdAt": "2023-06-11T05:14:29.369Z",
+                    "updatedAt": "2023-06-11T05:14:30.207Z",
+                    "publishedAt": "2023-06-11T05:14:30.193Z",
+                    "name": "adfdf"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 11
+    }
+  }
+}
 ```
 
 #### to get all the products corresponding to a merchant
@@ -209,7 +261,48 @@ response
 response
 
 ```json
-
+{
+  "data": {
+    "id": 13,
+    "attributes": {
+      "name": "new product",
+      "description": "die",
+      "price": 102.32,
+      "createdAt": "2023-06-11T09:26:49.286Z",
+      "updatedAt": "2023-06-11T09:26:49.286Z",
+      "publishedAt": "2023-06-11T09:26:49.249Z",
+      "highlights": ["bruh", "mi"],
+      "details": "dead",
+      "seller": {
+        "data": {
+          "id": 1,
+          "attributes": {
+            "username": "bobby",
+            "email": "bobby@email.com",
+            "provider": "local",
+            "confirmed": true,
+            "blocked": false,
+            "createdAt": "2023-05-26T10:02:50.781Z",
+            "updatedAt": "2023-06-11T09:31:21.583Z",
+            "companyName": "booby",
+            "zone": {
+              "data": {
+                "id": 1,
+                "attributes": {
+                  "createdAt": "2023-06-11T05:14:29.369Z",
+                  "updatedAt": "2023-06-11T05:14:30.207Z",
+                  "publishedAt": "2023-06-11T05:14:30.193Z",
+                  "name": "adfdf"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "meta": {}
+}
 ```
 
 ## Orders

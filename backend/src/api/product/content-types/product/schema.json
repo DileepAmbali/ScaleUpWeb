@@ -43,6 +43,15 @@
     },
     "highlights": {
       "type": "json"
+    },
+    "sizes": {
+      "displayName": "sizes",
+      "type": "component",
+      "repeatable": true,
+      "component": "size.sizes"
+    },
+    "details": {
+      "type": "text"
     }
   }
 }

@@ -75,6 +75,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::zone.zone"
+    },
+    "companyName": {
+      "type": "string"
     }
   }
 }
