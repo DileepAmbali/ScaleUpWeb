@@ -5,7 +5,7 @@ module.exports = {
     const { nanoid } = require("nanoid");
     const axios = require("axios");
 
-    const { product } = ctx.request.body;
+    const { product, address } = ctx.request.body;
 
     const user = { id: ctx.state.user.id };
 
@@ -13,6 +13,7 @@ module.exports = {
       user,
       product,
       complete: false,
+      address,
     };
 
     const productObj = await strapi.entityService.findOne(
@@ -28,7 +29,7 @@ module.exports = {
     const orderAmount = productObj.price;
 
     const razorpayBody = {
-      amount: orderAmount,
+      amount: Math.ceil(orderAmount * 100),
       currency: "INR",
       receipt: nanoid(),
     };
@@ -51,7 +52,7 @@ module.exports = {
       });
       return { orderId: response.data.id };
     } catch (error) {
-      return ctx.badRequest("Payment Failed");
+      return ctx.badRequest(error.message);
     }
   },
 

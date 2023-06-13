@@ -65,28 +65,19 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "user"
-    },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product",
-      "mappedBy": "seller"
-    },
     "accUpgradeRequested": {
       "type": "boolean",
       "default": false,
-      "required": true,
+      "required": false,
       "private": true
     },
     "zone": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::zone.zone"
+    },
+    "companyName": {
+      "type": "string"
     }
   }
 }
