@@ -315,7 +315,8 @@ body
 
 ```json
 {
-  "product": { "id": 1 }
+  "product": { "id": 1 },
+  "address": "somestring"
 }
 ```
 
@@ -326,8 +327,6 @@ response
   "orderId": something
 }
 ```
-
-> this stuff is from an old project of mine which used razorpay, but i cant create a razorpay account rn, i imagine stripe will have a similar flow, but with different fields. some fields need to be added to get it working.
 
 ### POST /api/orders/paymentComplete
 
