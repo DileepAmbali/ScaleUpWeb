@@ -2,14 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .correct-credentials {
-    @apply bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
-  }
+@layer base {
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
 }
 
 @layer components {
-  .incorrect-credentials {
-    @apply bg-red-50  border-red-500 text-red-700 placeholder-red-400 focus:ring-red-500 focus:border-red-500  dark:bg-red-100 dark:border-red-400;
-  }
+	.correct-credentials {
+		@apply bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+	}
+}
+
+@layer components {
+	.incorrect-credentials {
+		@apply bg-red-50  border-red-500 text-red-700 placeholder-red-400 focus:ring-red-500 focus:border-red-500  dark:bg-red-100 dark:border-red-400;
+	}
 }
