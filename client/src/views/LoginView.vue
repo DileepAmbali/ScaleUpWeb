@@ -1,5 +1,5 @@
 <template>
-	<div class="w-full my-8 flex flex-col justify-center p-4 m-auto xs:w-96">
+	<div class="w-full flex flex-col justify-center p-4 m-auto xs:w-96">
 		<div class="flex justify-center items-center mb-4">
 			<img
 				src="https://flowbite.com/docs/images/logo.svg"
@@ -71,24 +71,20 @@
 					required
 				/>
 				<p
-					v-if="passwordError"
+					v-if="passwordError || LoginError"
 					class="mt-2 text-sm text-red-600 dark:text-red-500"
 				>
-					<span class="font-medium">Goodn't!</span> Password is wrong!
+					<span class="font-medium">Goodn't!</span> Password or Email
+					is wrong!
 				</p>
 			</div>
-			<div class="flex items-start mb-6">
-				<label
-					for="register"
-					class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-					>Not registered yet?
-					<a
-						href="/register"
-						class="font-bold underline underline-offset-4 hover:text-blue-700 dark:hover:text-blue-500"
-						>Register Here</a
-					>
-				</label>
-			</div>
+			<!-- <div v-if="LoginError">
+				<p class="text-sm text-red-600 dark:text-red-500">
+					<span class="font-medium">Goodn't!</span> Username or
+					Password is wrong!
+				</p>
+			</div> -->
+
 			<button
 				type="submit"
 				class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -101,14 +97,60 @@
 
 <script setup>
 import { ref } from "vue"
+import axios from "axios"
+import { useRouter } from "vue-router"
 
-const emailError = false
-const passwordError = false
+const router = useRouter()
+
+const emailError = ref(false)
+const passwordError = ref(false)
+const LoginError = ref(false)
 
 const email = ref("")
 const password = ref("")
 
-const handleSubmit = async () => {}
+const handleSubmit = async () => {
+	// Reset the error states
+	emailError.value = false
+	passwordError.value = false
+
+	try {
+		const response = await axios.post(
+			"http://localhost:1337/api/auth/local",
+			{
+				identifier: email.value,
+				password: password.value
+			}
+		)
+
+		// Handle the response as needed
+		const { jwt } = response.data
+
+		const userresponse = await axios.get(
+			"http://localhost:1337/api/users/me?populate=*",
+			{
+				headers: {
+					Authorization: `Bearer ${jwt}`
+				}
+			}
+		)
+
+		const user = userresponse.data
+
+		// Save the user details and token to localStorage
+		localStorage.setItem("token", jwt)
+		localStorage.setItem("user", JSON.stringify(user) || "{}")
+		localStorage.setItem("isLoggedIn", true)
+
+		// Navigate to the home page
+		window.location.href = "/"
+	} catch (error) {
+		// Handle the error and set the corresponding error states
+		if (error) {
+			LoginError.value = true
+		}
+	}
+}
 </script>
 
 <style lang="scss" scoped></style>

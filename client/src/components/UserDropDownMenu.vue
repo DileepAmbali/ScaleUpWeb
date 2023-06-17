@@ -8,12 +8,15 @@
 			<div class="truncate">{{ userEmail }}</div>
 		</div>
 		<ul
+			v-if="isLoggedIn"
 			class="py-2 text-sm text-gray-700 dark:text-gray-200"
 			aria-labelledby="dropdownUserAvatarButton"
 		>
 			<li>
 				<RouterLink
-					:to="profileRoute"
+					:to="{
+						name: 'profile'
+					}"
 					class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
 					>Profile</RouterLink
 				>
@@ -27,14 +30,15 @@
 				>
 			</li>
 		</ul>
-		<div v-if="isLoggedIn" class="py-2">
-			<a
-				href="#"
-				class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-				>Sign out</a
+		<div v-if="isLoggedIn" class="py-2" :key="isLoggedIn">
+			<div
+				class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white hover:cursor-pointer"
+				@click="logout"
 			>
+				Sign out
+			</div>
 		</div>
-		<div v-else class="py-2">
+		<div v-else class="py-2" :key="!isLoggedIn">
 			<a
 				href="/login"
 				class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
@@ -51,30 +55,36 @@ import { RouterLink } from "vue-router"
 // "`/user/${$store.state.user.id}`"
 
 const userName = computed(() => {
-	return localStorage.getItem("userName")
-		? localStorage.getItem("userName")
+	return localStorage.getItem("user")
+		? JSON.parse(localStorage.getItem("user")).username
 		: "Hello User!"
 })
 
 const userEmail = computed(() => {
-	return localStorage.getItem("userEmail")
-		? localStorage.getItem("userEmail")
+	return localStorage.getItem("user")
+		? JSON.parse(localStorage.getItem("user")).email
 		: "Good day!"
 })
 
 const isLoggedIn = computed(() => {
 	return localStorage.getItem("isLoggedIn")
-		? localStorage.getItem("isLoggedIn")
+		? JSON.parse(localStorage.getItem("isLoggedIn"))
 		: false
 })
 
 const id = computed(() => {
-	return 2
+	return localStorage.getItem("user")
+		? JSON.parse(localStorage.getItem("user")).id
+		: null
 })
 
-const profileRoute = computed(() => {
-	return { name: "customerProfile", params: { customerId: id.value } }
-})
+const logout = () => {
+	localStorage.removeItem("user")
+	localStorage.removeItem("token")
+	localStorage.removeItem("userDP")
+	localStorage.setItem("isLoggedIn", false)
+	window.location.href = "/"
+}
 </script>
 
 <style lang="scss" scoped></style>
