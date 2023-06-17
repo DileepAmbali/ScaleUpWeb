@@ -18,7 +18,7 @@
 			</div>
 			<div class="flex items-center md:order-2">
 				<!-- User Dropdown -->
-				<RouterLink
+				<!-- <RouterLink
 					:to="{ name: 'cart', params: { customerId: id } }"
 					class="active:dark:bg-gray-950 active:bg-slate-300 rounded-xl"
 				>
@@ -26,7 +26,7 @@
 					<ShoppingCartIcon
 						class="w-7 h-7 m-2 mx-6 dark:text-white"
 					/>
-				</RouterLink>
+				</RouterLink> -->
 				<UserDropdown class="hidden md:flex" />
 				<!--TODO :logout-route="logoutRoute" -->
 				<!-- User Dropdown Ends -->
@@ -107,12 +107,6 @@ import UserDropDownMenu from "./UserDropDownMenu.vue"
 const router = useRouter()
 
 const id = ref("1") //This should be the id of the user logged in
-
-const usersName = "John Doe"
-const usersEmailId = "johndoe@gmail.com"
-
-const isCustomer = true
-const isMerchant = false
 </script>
 
 <style scoped></style>
