@@ -16,6 +16,7 @@ import CreateProductsView from "../views/Merchant/CreateProductsView.vue"
 import RegisterChoiceView from "../views/RegisterChoiceView.vue"
 import RegisterCustomerView from "../views/Customer/RegisterCustomerView.vue"
 import RegisterMerchantView from "../views/Merchant/RegisterMerchantView.vue"
+import UserProfileView from "../views/UserProfileView.vue"
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -54,6 +55,11 @@ const router = createRouter({
 			path: "/login",
 			name: "login",
 			component: LoginView
+		},
+		{
+			path: "/profile",
+			name: "profile",
+			component: UserProfileView
 		},
 		{
 			path: "/products",
