@@ -7,10 +7,15 @@
 				class="p-2 px-4 odd:bg-slate-50 dark:odd:bg-[#19212c6d]"
 			>
 				<a :href="'/products/' + product.id" class="group">
-					<div class="flex items-center space-x-4 h-28">
+					<div
+						class="flex items-center space-x-4 h-28 overflow-hidden"
+					>
 						<img
 							class="rounded-sm shadow-lg object-cover w-20"
-							:src="product.images[0].src"
+							:src="
+								baseService.baseURL +
+								product.images[0].attributes.url
+							"
 							alt="product.images[0].alt "
 						/>
 						<div class="flex-1 min-w-0">
@@ -50,8 +55,10 @@
 						class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
 					>
 						<img
-							:src="product.images[0].src"
-							:alt="product.images[0].alt"
+							:src="
+								baseService.baseURL +
+								product.images[0].attributes.url
+							"
 							class="h-full w-full object-cover object-center group-hover:opacity-75"
 						/>
 					</div>
@@ -73,7 +80,9 @@
 
 <script setup>
 import { ref, computed, watchEffect } from "vue"
-import { RouterLink } from "vue-router"
+
+import BaseService from "../services/main"
+const baseService = new BaseService()
 
 const props = defineProps({
 	products: {

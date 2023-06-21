@@ -8,6 +8,9 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "inStock": {
+      "type": "boolean"
     }
   }
 }

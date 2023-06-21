@@ -1,6 +1,0 @@
-{
-    "include": [
-        "./*.ts",
-        "index.d.ts"
-    ]
-}
