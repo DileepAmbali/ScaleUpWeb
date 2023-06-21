@@ -1,27 +1,29 @@
 <template>
-  <AllProductList :products="products" />
+	<AllProductList v-if="isLoaded" :products="products" />
+	<Skeleton v-else />
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue"
 
-import Navbar from "../../components/Navbar.vue";
-import Footer from "../../components/Footer.vue";
+import AllProductList from "../../components/AllProductList.vue"
+import Skeleton from "../../components/Skeleton.vue"
 
-import AllProductList from "../../components/AllProductList.vue";
+import ProductService from "../../services/ProductServices"
+const productService = new ProductService()
 
-import ProductService from "../../services/ProductServices";
-const productService = new ProductService();
-
-const products = ref([]);
+const products = ref([])
+const isLoaded = ref(false)
 
 onMounted(async () => {
-  try {
-    const response = await productService.getProducts();
-    // console.log(response.data);
-    products.value = response;
-  } catch (error) {
-    // console.log(error);
-  }
-});
+	try {
+		products.value = await productService.getAllProducts()
+	} catch (error) {
+		console.log(error)
+	} finally {
+		if (products.value.length > 0) {
+			isLoaded.value = true
+		}
+	}
+})
 </script>
