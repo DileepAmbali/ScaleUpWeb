@@ -77,7 +77,19 @@
       "target": "api::zone.zone"
     },
     "companyName": {
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "dp": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

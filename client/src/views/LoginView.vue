@@ -84,6 +84,10 @@
 					Password is wrong!
 				</p>
 			</div> -->
+			<div class="dark:text-white text-sm mb-6">
+				Not a user?
+				<a href="/register" class="underline">Register Here</a>
+			</div>
 
 			<button
 				type="submit"
