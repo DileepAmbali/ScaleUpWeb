@@ -80,13 +80,6 @@
 									>Products</a
 								>
 							</li>
-							<li>
-								<a
-									href="#"
-									class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-									>Shops</a
-								>
-							</li>
 						</ul>
 					</div>
 					<UserDropDownMenu class="mt-4 md:hidden" />
@@ -97,16 +90,9 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue"
-import { RouterLink, useRoute, useRouter } from "vue-router"
-import { ShoppingCartIcon } from "@heroicons/vue/24/outline"
-import CartSideMenu from "./CartSideMenu.vue"
+import { ref } from "vue"
 import UserDropdown from "./UserDropDown.vue"
 import UserDropDownMenu from "./UserDropDownMenu.vue"
-
-const router = useRouter()
-
-const id = ref("1") //This should be the id of the user logged in
 </script>
 
 <style scoped></style>

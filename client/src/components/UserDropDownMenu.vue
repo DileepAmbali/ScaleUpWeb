@@ -22,7 +22,7 @@
 				>
 			</li>
 
-			<li>
+			<li v-if="!isMerchant">
 				<a
 					href="#"
 					class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -52,8 +52,6 @@
 import { computed, ref } from "vue"
 import { RouterLink } from "vue-router"
 
-// "`/user/${$store.state.user.id}`"
-
 const userName = computed(() => {
 	return localStorage.getItem("user")
 		? JSON.parse(localStorage.getItem("user")).username
@@ -69,6 +67,12 @@ const userEmail = computed(() => {
 const isLoggedIn = computed(() => {
 	return localStorage.getItem("isLoggedIn")
 		? JSON.parse(localStorage.getItem("isLoggedIn"))
+		: false
+})
+
+const isMerchant = computed(() => {
+	return JSON.parse(localStorage.getItem("user")).role.type === "merchant"
+		? true
 		: false
 })
 

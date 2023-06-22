@@ -110,11 +110,6 @@ const router = createRouter({
 			path: "/merchants",
 			children: [
 				{
-					path: "",
-					name: "merchants",
-					component: AllMerchantsView
-				},
-				{
 					path: ":sellerId",
 					children: [
 						{

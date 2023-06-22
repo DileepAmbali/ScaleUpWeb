@@ -173,7 +173,7 @@
 								<h3
 									class="text-sm font-medium text-gray-900 dark:text-white"
 								>
-									Size
+									Quantity
 								</h3>
 							</div>
 							<RadioGroup v-model="selectedSize" class="mt-4">
@@ -340,8 +340,6 @@ onMounted(async () => {
 		if (!product) {
 			return
 		} else {
-			console.log("Done loading product")
-			console.log(product)
 			isLoading.value = false
 		}
 	}

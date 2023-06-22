@@ -1,69 +1,52 @@
 <template>
-  <!-- <Navbar /> -->
+	<div class="flex flex-col justify-center items-center">
+		<div class="w-5/6 mt-6 md:mt-10 pb-2 dark:border-slate-700">
+			<div class="text-3xl font-bold dark:text-white py-4">Shops</div>
 
-  <div class="flex flex-col justify-center items-center">
-    <div class="w-full md:w-5/6 mt-6 md:mt-10 pb-2 dark:border-slate-700">
-      <p class="text-2xl font-sans dark:text-gray-100 px-2">
-        Trending Products
-      </p>
-      <AllProductList :products="products" />
-      <!-- Load More button -->
-      <div class="col-span-4 w-11/12 mx-auto pt-4 md:pt-2">
-        <a href="/products">
-          <button
-            type="button"
-            class="w-full inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white dark:text-gray-900 bg-gray-700 dark:bg-gray-50 hover:bg-gray-700 dark:hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 dark:focus:ring-gray-50"
-          >
-            Load more
-          </button>
-        </a>
-      </div>
-    </div>
-    <div
-      class="w-full md:w-5/6 mt-6 md:mt-10 border-b-2 pb-2 dark:border-slate-700"
-    >
-      <p class="text-2xl font-sans dark:text-gray-100">Trending Shops</p>
-      <AllProductList :products="products" />
-      <!-- Load More button -->
-      <div class="col-span-4 w-11/12 mx-auto pt-4 md:pt-2">
-        <a href="/products">
-          <button
-            type="button"
-            class="w-full inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white dark:text-gray-900 bg-gray-700 dark:bg-gray-50 hover:bg-gray-700 dark:hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 dark:focus:ring-gray-50"
-          >
-            Load more
-          </button>
-        </a>
-      </div>
-    </div>
-  </div>
-  <!-- <Footer /> -->
+			<Skeleton v-if="isLoading" />
+
+			<div v-else class="grid grid-cols-2 md:grid-cols-3 gap-4">
+				<div v-for="shop in shops" :key="shop">
+					<a :href="/merchants/ + shop.id">
+						<img
+							class="h-auto max-w-full rounded-lg"
+							:src="baseService.baseURL + shop.image"
+							:alt="shop.companyName"
+						/>
+						<div
+							class="text-xl font-bold dark:text-white p-2 text-center"
+						>
+							{{ shop.companyName }}
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { RouterLink } from "vue-router";
-import Card from "../components/Card.vue";
-import ProductList from "../components/ProductList.vue";
-import AllProductList from "../components/AllProductList.vue";
+import { ref, onMounted } from "vue"
+import Skeleton from "../components/Skeleton.vue"
 
-import Navbar from "../components/Navbar.vue";
-import Footer from "../components/Footer.vue";
+import ShopService from "../services/ShopServices.js"
+const shopService = new ShopService()
 
-import ProductService from "../services/ProductServices.js";
-const productService = new ProductService();
+import BaseService from "../services/main.js"
+const baseService = new BaseService()
 
-const products = ref([]);
+const isLoading = ref(true)
+const shops = ref([])
 onMounted(async () => {
-  try {
-    products.value = await productService.getNProducts(4);
-  } catch (error) {
-    console.log(error);
-  } finally {
-    console.log("products:");
-    console.log(products.value);
-  }
-});
+	try {
+		const response = await shopService.getAllShops()
+		shops.value = response
+	} catch (error) {
+		console.log(error)
+	} finally {
+		isLoading.value = false
+	}
+})
 </script>
 
 <style scoped></style>

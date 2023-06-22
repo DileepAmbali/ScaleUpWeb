@@ -2,7 +2,7 @@ import axios from "axios"
 export default class ProductService {
 	constructor() {
 		this.URL = "http://localhost:1337/api/products"
-		this.query = "?populate=seller.zone,images,sizes"
+		this.query = "populate=seller.zone,images,sizes"
 		this.products = []
 		this.product = {}
 	}
@@ -77,7 +77,9 @@ export default class ProductService {
 
 	async getAllProducts() {
 		try {
-			const response = await axios.get(this.URL + this.query)
+			const response = await axios.get(
+				this.URL + "?populate=seller.zone,images,sizes"
+			)
 
 			this.converFormat(response)
 		} catch (error) {
@@ -88,9 +90,10 @@ export default class ProductService {
 	}
 
 	async getProductById(id) {
-		let product = {}
 		try {
-			const response = await axios.get(`${this.URL}/${id}${this.query}`)
+			const response = await axios.get(
+				`${this.URL}/${id}?populate=seller.zone,images,sizes`
+			)
 			this.converFormat(response)
 		} catch (e) {
 			console.log(e)
@@ -101,4 +104,18 @@ export default class ProductService {
 	}
 
 	async getNProducts(n) {}
+
+	async getProductsBySellerId(id) {
+		try {
+			const response = await axios.get(
+				`${this.URL}?filters[seller][id][$eq]=${id}&populate=seller.zone,images,sizes}`
+			)
+			console.log(response.data.data)
+			this.converFormat(response)
+		} catch (e) {
+			console.log(e)
+		} finally {
+			return this.products
+		}
+	}
 }
