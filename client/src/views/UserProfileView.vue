@@ -16,7 +16,7 @@
 		<div class="text-3xl md:text-4xl font-extrabold dark:text-white">
 			Your Profile
 		</div>
-		<div>
+		<div v-if="isMerchant">
 			<div class="mt-4 py-4 text-xl font-semibold dark:text-white">
 				Your Products
 			</div>

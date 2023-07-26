@@ -1,24 +1,27 @@
 <template>
 	<div class="flex flex-col justify-center items-center">
 		<div class="w-5/6 mt-6 md:mt-10 pb-2 dark:border-slate-700">
-			<div class="text-3xl font-bold dark:text-white py-4">Shops</div>
-
 			<Skeleton v-if="isLoading" />
 
-			<div v-else class="grid grid-cols-2 md:grid-cols-3 gap-4">
-				<div v-for="shop in shops" :key="shop">
-					<a :href="/merchants/ + shop.id">
-						<img
-							class="h-auto max-w-full rounded-lg"
-							:src="baseService.baseURL + shop.image"
-							:alt="shop.companyName"
-						/>
-						<div
-							class="text-xl font-bold dark:text-white p-2 text-center"
-						>
-							{{ shop.companyName }}
-						</div>
-					</a>
+			<div v-else>
+				<div class="text-3xl font-bold dark:text-white py-4">
+					Shops in {{ shops[0].zone }}
+				</div>
+				<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+					<div v-for="shop in shops" :key="shop">
+						<a :href="/merchants/ + shop.id">
+							<img
+								class="h-auto max-w-full rounded-lg"
+								:src="baseService.baseURL + shop.image"
+								:alt="shop.companyName"
+							/>
+							<div
+								class="text-xl font-bold dark:text-white p-2 text-center"
+							>
+								{{ shop.companyName }}
+							</div>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>

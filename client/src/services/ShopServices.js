@@ -9,6 +9,7 @@ export default class ShopServices {
 	async getAllShops() {
 		try {
 			const response = await axios.get(this.URL + this.query)
+
 			for (let user of response.data) {
 				if (user.role.type === "merchant") {
 					const data = {

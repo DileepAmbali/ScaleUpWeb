@@ -18,17 +18,7 @@
 			</div>
 			<div class="flex items-center md:order-2">
 				<!-- User Dropdown -->
-				<!-- <RouterLink
-					:to="{ name: 'cart', params: { customerId: id } }"
-					class="active:dark:bg-gray-950 active:bg-slate-300 rounded-xl"
-				>
-					<CartSideMenu />
-					<ShoppingCartIcon
-						class="w-7 h-7 m-2 mx-6 dark:text-white"
-					/>
-				</RouterLink> -->
 				<UserDropdown class="hidden md:flex" />
-				<!--TODO :logout-route="logoutRoute" -->
 				<!-- User Dropdown Ends -->
 
 				<!-- Hamburger -->
@@ -90,7 +80,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue"
 import UserDropdown from "./UserDropDown.vue"
 import UserDropDownMenu from "./UserDropDownMenu.vue"
 </script>

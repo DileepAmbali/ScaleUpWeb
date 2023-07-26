@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <Navbar />
-    <RouterView />
-    <Footer />
-  </div>
+	<div>
+		<Navbar />
+		<RouterView />
+		<Footer />
+	</div>
 </template>
 
 <script setup>
-import { RouterView } from "vue-router";
-import Navbar from "./components/Navbar.vue";
-import Footer from "./components/Footer.vue";
+import { RouterView } from "vue-router"
+import Navbar from "./components/Navbar.vue"
+import Footer from "./components/Footer.vue"
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
